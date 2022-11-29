@@ -12,9 +12,6 @@ class Shape(Point):
         
     # сохранение фигуры в файл
     def Save(self):
-        # file = open('shape.txt', mode='w', encoding='utf')
-        # file.write(self)
-        # file.close()
 
         with open('shape.dll', mode='wb') as file:
             pickle.dump(self.pointX, file)
@@ -23,9 +20,6 @@ class Shape(Point):
 
     # считывание фигуры из файла
     def Load(self):
-        # file = open('shape.txt', mode='w', encoding='utf')
-        # information = file.readlines()
-        # return information
 
         with open ('shape.dll', mode='rb') as file:
             X = pickle.load(file)
@@ -43,13 +37,6 @@ class Rectangle(Shape):
 
     def __init__(self, __objPoint, width, higth, pointX = 0, pointY = 0) -> None:
         super().__init__(pointX, pointY)
-    # def __init__(self, __objPoint, width, higth, pointX = 0 , pointY = 0) -> None:
-    #     Point.__init__(self,pointX, pointY)
-    #     Shape.__init__(self)
-
-        # self.__leftTopAngle = __objPoint
-        # self.__width = width
-        # self.__higth = higth
     
         self.__leftTopAngle = __objPoint
         self.__width = width
@@ -60,23 +47,12 @@ class Square(Rectangle):
     def __init__(self, __objPoint, width, higth, pointX = 0, pointY = 0) -> None:
         super().__init__(__objPoint, width, higth, pointX, pointY)
 
-    # def __init__(self, __objPoint, side, pointX = 0 , pointY = 0) -> None:
-    #     Point.__init__(self,pointX, pointY)
-    #     Shape.__init__(self)
-
-        # self.__leftTopAngle = __objPoint
-        # self.__side = side
       
 class Circle(Rectangle):
 
     def __init__(self, __objPoint, width, higth, pointX=0, pointY=0) -> None:
         super().__init__(__objPoint, width, higth, pointX, pointY)
-    # def __init__(self, centerPoint, radiuse, pointX = 0, pointY = 0) -> None:
-    #     Point.__init__(self,pointX, pointY)
-    #     Shape.__init__(self) 
 
-        # self.__centerPoint = centerPoint
-        # self.__radiuse = radiuse
 
 class Ellips(Rectangle):
 
