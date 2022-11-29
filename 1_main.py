@@ -26,16 +26,16 @@ class Rectangle(Figure, Point):
     def __init__(self,__point1, __point2, position_X = 0, position_Y = 0) -> None:
         Figure.__init__(self)
         Point.__init__(self, position_X, position_Y)
-        self.LeftTopAngle = __point1
-        self.RightDownAngle = __point2
+        self.__LeftTopAngle = __point1
+        self.__RightDownAngle = __point2
 
     def __int__(self):
-        temp1 = Point.getHorizonalLine(self.LeftTopAngle, self.RightDownAngle)
-        temp2 = Point.getVerticalLine(self.LeftTopAngle, self.RightDownAngle)
+        temp1 = Point.getHorizonalLine(self.__LeftTopAngle, self.__RightDownAngle)
+        temp2 = Point.getVerticalLine(self.__LeftTopAngle, self.__RightDownAngle)
         return int(temp1*temp2)
 
     def __str__(self) -> str:
-        return f"\nrectanguel square - {self.__int__()}, left top angle point - {self.LeftTopAngle}, bottom right angle point - {self.RightDownAngle}"
+        return f"\nrectanguel square - {self.__int__()}, left top angle point - {self.__LeftTopAngle}, bottom right angle point - {self.__RightDownAngle}"
 
 
 
@@ -46,16 +46,16 @@ class RightTriangle(Figure, Point):
     def __init__(self, __point1, __point2, position_X = 0, position_Y = 0) -> None:
         Figure.__init__(self)
         Point.__init__(self, position_X, position_Y)
-        self.LeftTopAngle = __point1
-        self.RightDownAngle = __point2
+        self.__LeftTopAngle = __point1
+        self.__RightDownAngle = __point2
 
     def __int__(self):
-        temp1 = Point.getHorizonalLine(self.LeftTopAngle, self.RightDownAngle)
-        temp2 = Point.getVerticalLine(self.LeftTopAngle, self.RightDownAngle)
+        temp1 = Point.getHorizonalLine(self.__LeftTopAngle, self.__RightDownAngle)
+        temp2 = Point.getVerticalLine(self.__LeftTopAngle, self.__RightDownAngle)
         return int((temp1*temp2)/2)
 
     def __str__(self) -> str:
-        return f"right triangle square - {self.__int__()}, left top angle point - {self.LeftTopAngle}, bottom right angle point - {self.RightDownAngle}"
+        return f"right triangle square - {self.__int__()}, left top angle point - {self.__LeftTopAngle}, bottom right angle point - {self.__RightDownAngle}"
 
 
 
@@ -64,44 +64,44 @@ class Circle(Figure, Point):
     def __init__(self, __point1, __point2, position_X = 0, position_Y = 0) -> None:
         Figure.__init__(self)
         Point.__init__(self, position_X, position_Y)
-        self.centrPointCircl = __point1
-        self.PointOnCircl = __point2
+        self.__centrPointCircl = __point1
+        self.__PointOnCircl = __point2
 
     def funcRadius(self):
-        axisProjection_X = Point.getHorizonalLine(self.centrPointCircl, self.PointOnCircl)
-        axisProjection_Y = Point.getVerticalLine(self.centrPointCircl, self.PointOnCircl)
+        axisProjection_X = Point.getHorizonalLine(self.__centrPointCircl, self.__PointOnCircl)
+        axisProjection_Y = Point.getVerticalLine(self.__centrPointCircl, self.__PointOnCircl)
         return hypot(axisProjection_X, axisProjection_Y)
 
     def __int__(self):
         return int(2* 3.14 * self.funcRadius())
 
     def __str__(self):
-        return f"circle square - {self.__int__()}, radius of circle {self.funcRadius():.2f}, center of circle  - {self.centrPointCircl}"
+        return f"circle square - {self.__int__()}, radius of circle {self.funcRadius():.2f}, center of circle  - {self.__centrPointCircl}"
 
 # задание трапеции по 4_ем точкам
 class Trapezoid(Figure, Point):
     def __init__(self, __point1, __point2, __point3, __point4, position_X = 0, position_Y =0) -> None:
         Figure.__init__(self)
         Point.__init__(self, position_X, position_Y)
-        self.point1 = __point1
-        self.point2 = __point2
-        self.point3 = __point3
-        self.point4 = __point4
+        self.__point1 = __point1
+        self.__point2 = __point2
+        self.__point3 = __point3
+        self.__point4 = __point4
 
         self.topBase = None
         self.lowBase = None
         self.hight = None
 
     def __int__(self):
-        self.topBase = Point.getHorizonalLine(self.point1, self.point3)
-        self.lowBase = Point.getHorizonalLine(self.point4, self.point2)
-        self.hight = Point.getVerticalLine(self.point1, self.point2)
+        self.topBase = Point.getHorizonalLine(self.__point1, self.__point3)
+        self.lowBase = Point.getHorizonalLine(self.__point4, self.__point2)
+        self.hight = Point.getVerticalLine(self.__point1, self.__point2)
         return int(((fabs(self.topBase) + fabs(self.lowBase)) /2) * self.hight)
 
     def __str__(self) -> str:
         return f"trapezoid square - {self.__int__()}, top base - {self.topBase}, low base - {self.lowBase}, hight of trapezoid - {self.hight}" 
 
-# тчк. для формирования гееметрических фигур
+# тчк. для формирования геометрических фигур
 p1 = Point(10, 30)
 p2 = Point(25, 25)
 p3 = Point(20, 30)
